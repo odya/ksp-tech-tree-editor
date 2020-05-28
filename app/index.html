@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>KSP Tech Tree Editor</title>
+    <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+    <link href="../node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!--<script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>-->
+    <script src="./index.js"></script>
+    <style>
+        * {
+            font-family: "Helvetica Neue",Arial;
+            font-size: 12px;
+        }
+        body {
+            background-color: #444444;
+            margin:0;
+        }
+        .form-group-sm {
+            margin-bottom: 10px;
+        }
+        #rightPanel {
+            padding: 5px;
+            font-size: 13px;
+            background-color: #fff;
+            border-left: 1px solid #ddd;
+            overflow: auto;
+            width: 300px;
+            position: absolute;
+            right: 0;
+            top: 0;
+            bottom:0;
+        }
+        #treeContainer {
+            /*background-color: lightslategray;
+            background-color: steelblue;
+            background-color: lightseagreen;*/
+            background-color: darkcyan;
+            /*background-color: seagreen;*/
+            /*background-color: teal;*/
+            position: absolute;
+            right: 300px;
+            left: 0;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+<div id="rightPanel">
+    <ul class="nav nav-pills nav-justified" role="tablist">
+        <li role="presentation" class="active"><a href="#parts" aria-controls="parts" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-tree-conifer"></span> Parts</a></li>
+        <li role="presentation" class=""><a href="#tree" aria-controls="tree" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-tree-conifer"></span> Tree</a></li>
+        <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-th"></span> Placement</a></li>
+        <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-floppy-disk"></span> Save</a></li>
+    </ul>
+    <br>
+    <div class="well well-sm">
+        Select KSP dir:
+        <button id="selectKspDirBtn" onclick="selectKspDir()">Open</button>
+    </div>
+    <div id="treeInspector">
+        <div class="">
+            <div class="">
+                <form>
+                    <div class="form-group form-group-sm">
+                        <label>Id</label>
+                        <input type="text" name="i-id" class="form-control" placeholder="id">
+                    </div>
+                    <div class="form-group form-group-sm">
+                        <label>ParentId</label>
+                        <input type="text" name="i-parentId" class="form-control" placeholder="parentId">
+                    </div>
+                    <div class="form-group form-group-sm">
+                        <label>NodeName</label>
+                        <input type="text" name="i-nodeName" class="form-control" placeholder="nodeName">
+                    </div>
+                    <div class="form-group form-group-sm">
+                        <label>Cost</label>
+                        <input type="text" name="i-cost" class="form-control" placeholder="cost">
+                    </div>
+                    <div class="form-group form-group-sm">
+                        <label>Title</label>
+                        <input type="text" name="i-title" class="form-control" placeholder="title">
+                    </div>
+                    <div class="form-group form-group-sm">
+                        <label>Description</label>
+                        <textarea name="i-description" class="form-control" placeholder="description"></textarea>
+                    </div>
+                    <button type="button" class="btn btn-primary btn-sm" onclick="window.treeInspector.apply()">Apply</button>
+                    <button type="button" class="btn btn-default btn-sm" onclick="window.treeInspector.clear()">Cancel</button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div id="treeContainer"></div>
+</body>
+</html>
